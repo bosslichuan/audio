@@ -1,0 +1,58 @@
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  http:
+    encoding:
+      charset: utf-8
+server:
+  port: 80
+
+###################  beetl配置  ###################
+beetl:
+  enabled: true #是否启用beetl引擎
+  delimiterStatemnetStart: \@
+  delimiterStatemnetEnd:
+  resource:
+    root: /templates/ #html模板根目录
+    autocheck: true  #是否检测文件变化,开发用true合适，但线上要改为false
+
+
+
+###################  mybatis-plus配置  ###################
+mybatis-plus:
+  mapper-locations: classpath*:com/mk/**/*Mapper.xml
+  global-config:
+    id-type: 0  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 mp_
+    #table-prefix: mp_
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    #capital-mode: true
+    # Sequence序列接口实现类配置
+    #key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+
+
+##########################################################
+###################  JDBC  ###################
+##########################################################
+asg:
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/hoop?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: root
+      password: 123456
+      filters: log4j,wall,mergeStat
+
+logging:
+  level.root: info
+  level.com.dz: debug
+  path: .
+  file: pack.log
