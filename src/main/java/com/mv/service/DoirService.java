@@ -125,7 +125,7 @@ public class DoirService {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                CommonPool.getMovieList().add(m);
+                CommonPool.getMovieMap().put(m.getName(), m);
             });
 
         } catch (Throwable e) {

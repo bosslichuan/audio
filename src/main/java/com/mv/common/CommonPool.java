@@ -3,38 +3,39 @@ package com.mv.common;
 import com.mv.beans.Movie;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author guanghan
  * @date 2018/11/2
  */
 public class CommonPool {
-    public static List<Movie> movieList;
+    public static Map<String, Movie> movieMap;
 
     static {
-        movieList = new ArrayList<>(10);
+        movieMap = new HashMap<>(10);
     }
 
-    public static List<Movie> getMovieList() {
-        return movieList;
+
+    public static Map<String, Movie> getMovieMap() {
+        return movieMap;
     }
 
-    public static void setMovieList(List<Movie> movieList) {
-        CommonPool.movieList = movieList;
+    public static void setMovieMap(Map<String, Movie> movieMap) {
+        CommonPool.movieMap = movieMap;
     }
 
-    public synchronized static void addAll(List<Movie> movieList) {
-        if (null == movieList) {
-            movieList = new ArrayList<>(10);
+    public synchronized static void addAll(Map<String, Movie> map) {
+        if (null == map) {
+            movieMap = new HashMap<>(10);
         }
-        CommonPool.movieList.addAll(movieList);
+        CommonPool.movieMap.putAll(map);
     }
 
     public static void removeAll() {
-        if (!CollectionUtils.isEmpty(movieList)) {
-            movieList.clear();
+        if (!CollectionUtils.isEmpty(movieMap)) {
+            movieMap.clear();
         }
     }
 }

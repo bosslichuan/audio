@@ -31,10 +31,16 @@
 </head>
 <body>
 <input type="hidden" value="${page}">
+<form action="index">
+<p>
+    <input type="text" name="name" style="width: 120px; height: 20px; padding: 5px 5px" value="${name}">
+    <button type="submit">搜索</button>
+</p>
+</form>
 <div>
     @for(var o in movies){
     <div class="mv-list">
-        <a href="${o.playUrls[0]}">
+        <a href="${o.playUrls[0]}" target="_blank">
             <img height="120px" width="80px" src="${o.cover}">
         </a>
         <ul>
@@ -42,7 +48,7 @@
             <li>${o.heros}</li>
             <li>
                 @for(u in o.playUrls){
-                <a href="${u}">播放${uLP.index}</a>
+                <a href="${u}" target="_blank">播放${uLP.index}</a>
                 @}
             </li>
         </ul>
