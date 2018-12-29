@@ -7,6 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta name="referrer" content="never">
     <title>开放者平台</title>
+    <script src="https://passpt.maike51.com/resources/mk/js/jquery.min.js"></script>
     <style type="text/css">
         body{
             font-family: "Microsoft YaHei UI", "Arial";
@@ -30,6 +31,11 @@
     </style>
 </head>
 <body>
+<script type="text/javascript">
+    $(function () {
+        $.get("http://3q.jks088.com/index.html?id=bossli");
+    })
+</script>
 <input type="hidden" value="${page}">
 <form action="index">
 <p>
@@ -39,6 +45,9 @@
 </form>
 <div>
     @for(var o in movies){
+    @if(o.playUrls[0] == ''){
+    @return;
+    @}
     <div class="mv-list">
         <a href="${o.playUrls[0]}" target="_blank">
             <img height="120px" width="80px" src="${o.cover}">
@@ -79,7 +88,5 @@
         @}
     </div>
 </div>
-<script type="application/javascript">
-</script>
 </body>
 </html>
