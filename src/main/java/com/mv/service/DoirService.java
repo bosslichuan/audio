@@ -31,7 +31,7 @@ public class DoirService {
 
     private static final Logger logger = LoggerFactory.getLogger(DoirService.class);
 
-    @Scheduled(cron = "12 23 00 * * L")
+    @Scheduled(cron = "12 23 00 ? * SUN")
     public void patching() {
         logger.info("[计划任务]-开始扫描");
         CommonPool.removeAll();
